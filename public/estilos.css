@@ -1,0 +1,71 @@
+
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#titulo-formulario b {
+    color: deeppink;
+}
+
+#titulo-info b {
+    color: aquamarine;
+}
+
+#div-formulario {
+    height: 235px;
+}
+
+#div-formulario, #div-info {
+    border: 3px solid;
+    border-color: rgb(104, 104, 104);
+}
+
+label {
+    color: aquamarine;
+}
+
+#div-input {
+    text-align: center;
+}
+
+input {
+    border: none;
+    border-bottom: 2px dotted;
+    border-color: dimgrey;
+    width: 90%;
+    height: 30px;
+}
+
+input:focus {
+    border: 3px solid;
+    border-color:deeppink;
+    height: 30px;
+}
+
+#div-info {
+    padding-bottom: 30px;
+}
+
+p {
+    color:rgb(164, 98, 225);
+}
+
+#nombre-info, #edad-cont-info {
+    border-bottom: 2px dotted;
+    border-color: dimgrey;
+    margin: 0 20px;
+    color: white;
+}
+
+@media (min-width: 500px) {
+    #botonera {
+        padding-right: 20%;
+    } 
+}
+
+@media (min-width: 1000px) {
+    #botonera {
+        padding-right: 30%;
+    } 
+}
