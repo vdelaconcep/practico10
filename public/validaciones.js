@@ -27,6 +27,9 @@ const validacion = () => {
     } else if (parseInt(valorEdad) <= 0) {
         inputEdad.setCustomValidity('La edad debe ser mayor que cero');
         return false;
+    } else if (parseInt(valorEdad) > 130) {
+        inputEdad.setCustomValidity('La edad no debe ser mayor a 130 años');
+        return false;
     } else {
         return true;
     }
