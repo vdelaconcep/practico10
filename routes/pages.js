@@ -7,7 +7,7 @@ let edad
 
 // Página principal
 router.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {title: 'Formulario'});
 });
 
 // Recibir y mostrar datos
@@ -16,6 +16,7 @@ router.post('/', (req, res) => {
     edad = req.body.edad
     console.log('Datos recibidos:', req.body)
     res.render('info', {
+        title: 'Información',
         nombre: nombre,
         edad: edad
     })
