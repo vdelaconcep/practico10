@@ -1,5 +1,7 @@
 
 const router = require('express').Router();
+/* const validation = require('../middlewares/joiValidation');
+const user = require('../models/user') */
 
 // Datos a recibir desde el formulario:
 let nombre
@@ -12,8 +14,11 @@ router.get('/', (req, res) => {
 
 // Recibir y mostrar datos
 router.post('/', (req, res) => {
-    nombre = req.body.nombre
-    edad = req.body.edad
+    let { nombre, edad } = {
+        nombre: req.body.nombre,
+        edad: req.body.edad
+    }
+    
     console.log('Datos recibidos:', req.body)
     res.render('info', {
         title: 'Información',
