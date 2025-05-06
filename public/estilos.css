@@ -2,6 +2,16 @@
 
 body {
     font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+}
+
+#div-contenedor {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #titulo-formulario b {
@@ -14,11 +24,15 @@ body {
 
 #div-formulario {
     height: 235px;
+
 }
 
 #div-formulario, #div-info {
     border: 3px solid;
     border-color: rgb(104, 104, 104);
+    justify-self: center;
+    width: 50%;
+    min-width: 310px;
 }
 
 label {

@@ -1,31 +1,24 @@
-// Librerías
+
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
+const morgan = require('morgan');
+const router = require('./routes/pages');
 
 // Servidor
 const app = express();
 
 // Middlewares
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(morgan('dev'));
+app.use(express.urlencoded({extended: true}));
 
 // Utilizar las vistas de handlebars
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-
-//Routing
-app.get('/', (req, res) => {
-    res.render('index');
-})
-
-app.get('/info', (req, res) => {
-    res.render('info');
-})
-
-app.post('/datos', (req, res) => {
-    res.render('info');
-})
+// Rutas
+app.use('/', router)
 
 //Middlewares para manejar errores
 app.use((req, res) => {

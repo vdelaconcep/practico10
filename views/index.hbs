@@ -1,15 +1,15 @@
 <h1 id="titulo-formulario" class="text-center text-white p-3 fw-bold"><b>[</b>Formulario<b>]</b></h1>
-<form>
-    <div id="div-formulario" class="container bg-black pt-1" style="max-width: 400px">
+<form action="/" method="post">
+    <div id="div-formulario" class="bg-black pt-1" style="max-width: 400px">
 
-        <label for="nombre" class="form-label mb-1 mt-3 ps-2">Nombre: </label>
+        <label for="nombre" class="form-label mb-1 mt-3 ps-4">Nombre: </label>
         <div id="div-input">
-            <input class=" bg-black text-center mt-2 text-white" type="text" id="nombre" maxlength="50" required>
+            <input class=" bg-black text-center mt-2 text-white" type="text" id="nombre" name="nombre" maxlength="50" required>
         </div>
 
-        <label for="edad" class="form-label mb-1 mt-3 ps-2">Edad:</label>
+        <label for="edad" class="form-label mb-1 mt-3 ps-4">Edad:</label>
         <div id="div-input">
-            <input class="form- bg-black text-center mt-2 text-white" type="number" id="edad" min="1" max="130" required>
+            <input class="form- bg-black text-center mt-2 text-white" type="number" id="edad" name="edad" min="1" max="130" required>
         </div>
 
         <div class="text-end">
@@ -17,3 +17,4 @@
         </div>
     </div>
 </form>
+</div>
