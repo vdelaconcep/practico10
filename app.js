@@ -26,7 +26,7 @@ app.use((req, res) => {
 })
 
 app.use((err, req, res, next) => {
-    res.status(500).send('<h1>Error interno del servidor</h1>');
+    res.status(500).send('<h1>Error interno del servidor</h1>', err);
 })
 
 

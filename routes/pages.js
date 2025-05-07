@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 // Recibir y mostrar datos
-router.post('/', validation(usuario), (req, res) => {
+router.post('/',/*  validation(usuario), */ (req, res) => {
     let { nombre, edad } = {
         nombre: req.body.nombre,
         edad: req.body.edad

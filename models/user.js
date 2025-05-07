@@ -8,8 +8,8 @@ const usuario = Joi.object({
         .required(),
     edad: Joi.number()
         .integer()
-        .min(1)
-        .max(130)
+        .positive()
+        .max(140)
         .required()
 });
 
