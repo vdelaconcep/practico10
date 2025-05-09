@@ -3,9 +3,6 @@ const router = require('express').Router();
 const validation = require('../middlewares/joiValidation');
 const usuario = require('../models/user')
 
-// Datos a recibir desde el formulario:
-let nombre
-let edad
 
 // Página principal
 router.get('/', (req, res) => {
@@ -24,6 +21,11 @@ router.post('/',/*  validation(usuario), */ (req, res) => {
         edad: edad
     })
 });
+
+// Mostrar datos (sin enviar)
+router.get('/info', (req, res) => {
+    res.render('info', {title: 'Información'})
+})
 
 // Exportar el enrutador
 module.exports = router;
