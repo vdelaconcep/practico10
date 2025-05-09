@@ -6,7 +6,7 @@ body {
     flex-direction: column;
 }
 
-#div-contenedor {
+#div-index {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -24,13 +24,12 @@ body {
 
 #div-formulario {
     height: 235px;
-
+    justify-self: center;
 }
 
-#div-formulario, #div-info {
+#div-formulario, table {
     border: 3px solid;
     border-color: rgb(104, 104, 104);
-    justify-self: center;
     width: 50%;
     min-width: 310px;
 }
@@ -57,33 +56,10 @@ input:focus {
     height: 30px;
 }
 
-#btn-ver-datos {
-    color:deeppink;
+button:hover {
+    color:deeppink !important;
 }
 
-#div-info {
-    padding-bottom: 30px;
-}
-
-p {
-    color:rgb(164, 98, 225);
-}
-
-#nombre-info, #edad-cont-info {
-    border-bottom: 2px dotted;
-    border-color: dimgrey;
-    margin: 0 20px;
-    color: white;
-}
-
-@media (min-width: 500px) {
-    #botonera {
-        padding-right: 20%;
-    } 
-}
-
-@media (min-width: 1000px) {
-    #botonera {
-        padding-right: 30%;
-    } 
+.cabecera-tabla {
+    color: rebeccapurple !important;
 }

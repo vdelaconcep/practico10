@@ -1,17 +1,35 @@
-
+<div class="d-flex flex-column align-items-center mt-4">
 <h1 id="titulo-info" class="text-center text-white pb-3 fw-bold"><b>[</b>Info<b>]</b></h1>
 <form>
-    <div id="div-info" class="bg-black" style="max-width: 400px">
-        <p class="pt-3 ps-4">Nombre:</p>
-        <div id="nombre-info" class="ps-5">{{nombre}}</div>
-
-        <p class="pt-3 ps-4">Edad:</p>
-        <div id="edad-cont-info" class="ps-5">{{edad}} años</div>
-
-    </div>
-    <div id="botonera" class="text-end">
-        <a href="/">
-            <button type="button" class="btn m-3 bg-black text-white">//Volver..</button>
+    <table class="table-bordered text-center" style="max-width: 400px;">
+        <tr class="cabecera-tabla">
+            <th>
+                Nombre
+            </th>
+            <th>
+                Edad
+            </th>
+            <th class="pt-1 pb-0">
+                <i class="fa-solid fa-check"></i>
+            </th>
+        </tr>
+        <tr class="text-white">
+            <td>
+                {{nombre}}
+            </td>
+            <td>
+                {{edad}} años
+            </td>
+            <td class="pt-2 pb-0">
+                <input style="height: 16px;" type="checkbox">
+            </td>
+        </tr>
+    </table>
+        <a href="/" style="display: block;" class="text-center mt-2 p-0">
+            <button type="button" class="btn bg-black text-white m-0 p-0">//Ingresar datos...</button>
         </a>
-    </div>
+        <div class="text-center m-0 p-0">
+        <button type="button" class="btn bg-black text-white align-self-center mt-1 p-0">XX Borrar seleccionados XX</button>
+        </div>
 </form>
+</div>
