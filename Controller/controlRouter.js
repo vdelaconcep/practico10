@@ -1,8 +1,19 @@
 
 const Registro = require('../models/registroMongo');
 
-const mostrarInfo = (res) => {
-    res.status(200).render('info', { title: 'Información' });
+const mostrarInfo = async (res) => {
+    try {
+        const registros = await (Registro.find());
+        res.status(200).render('info', {
+            title: 'Información',
+            registros: registros
+        });
+    } catch (err) {
+        res.status(500).render('serverError', {
+            title: 500,
+            error: err
+        });
+    }
 }
 
 
@@ -29,17 +40,32 @@ const enviarDatosApp = async (req, res) => {
         mostrarInfo(res);
         
     } catch (err) {
-        res.status(500).json({ mensaje: 'Error al guardar el registro' });
+        res.status(500).render('serverError', {
+            title: 500,
+            error: err
+        });
     }
 };
 
 
+const eliminarIdApp = async (req, res) => {
+    try {
+        const baja = await Registro.findByIdAndDelete(req.params.id.slice(1))
+        mostrarInfo(res)
+    } catch (err) {
+        res.status(500).render('serverError', {
+            title: 500,
+            error: err
+        });
+    }
+}
 
 
 module.exports = {
     formularioApp,
     enviarDatosApp,
-    infoApp
+    infoApp,
+    eliminarIdApp
 }
 
 

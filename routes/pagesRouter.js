@@ -1,7 +1,8 @@
 const {
     formularioApp,
     enviarDatosApp,
-    infoApp
+    infoApp,
+    eliminarIdApp
 } = require ('../Controller/controlRouter')
 
 
@@ -18,6 +19,9 @@ router.post('/',/*  validation(usuario), */ enviarDatosApp );
 
 // Mostrar datos (sin enviar nuevo registro)
 router.get('/info', infoApp)
+
+// Eliminar registro
+router.get('/:id', eliminarIdApp)
 
 // Exportar el enrutador
 module.exports = router;
