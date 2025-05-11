@@ -6,7 +6,7 @@ body {
     flex-direction: column;
 }
 
-#div-index {
+#div-layout {
     width: 100%;
     position: absolute;
     top: 50%;
