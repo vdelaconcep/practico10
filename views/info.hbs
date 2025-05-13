@@ -11,6 +11,9 @@
             <th>
                 Edad
             </th>
+            <th style="width: 80px;">
+                <i class="fa-solid fa-xmark"></i>
+            </th>
         </tr>
         {{#each registros}}
         <tr class="text-white">
@@ -21,13 +24,14 @@
                 {{this.edad}} años
             </td>
             <td class="pt-2 pb-0">
-                <a href="/:{{this.id}}">
-                    <button type="button" class="btn bg-black align-self-center p-0" style="color: dimgrey;" title="eliminar"><i class="fa-solid fa-xmark"></i></button>
-                </a>
+                <input id="{{this._id}}" type="checkbox" style="height: 15px;">
             </td>
         </tr>
         {{/each}}
     </table>
+    <div class="text-center">
+    <button id="btn-eliminar" type="button" class="btn bg-black text-white m-0 p-0">XX Eliminar seleccionados XX</button>
+    </div>
 </form>
 {{else}}
 <h1 id="titulo-info" class="text-center text-white pb-3 fw-bold">--No hay datos para mostrar--</h1>
