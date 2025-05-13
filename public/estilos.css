@@ -42,7 +42,7 @@ label {
     text-align: center;
 }
 
-input[type="text"] {
+input {
     border: none;
     border-bottom: 2px dotted;
     border-color: dimgrey;
@@ -50,7 +50,7 @@ input[type="text"] {
     height: 30px;
 }
 
-input[type="text"]:focus {
+input:focus {
     border: 3px solid;
     border-color:deeppink;
     height: 30px;

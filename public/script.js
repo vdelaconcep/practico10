@@ -39,16 +39,32 @@ const validacion = () => {
     }
 }
 
-// Validación "front" del formulario
+
+// Enviar datos mediante formulario
 if (btnEnviar) {
-    btnEnviar.addEventListener('click', () => {
+    btnEnviar.addEventListener('click', async (event) => {
+        // Validación
         const datosValidos = validacion();
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', '/info', true);
 
         if (datosValidos) {
-            formulario.submit();
-            xhr.send();
+            event.preventDefault();
+
+            // Petición 'POST' a la API
+            try {
+                const res = await fetch('/api/registros', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `nombre=${inputNombre.value}&edad=${inputEdad.value}`
+                });
+                if (res) {
+                    alert('Se guardó el nuevo registro');
+                    window.location('/info');
+                } else {
+                    alert('No se han podido guardar los datos')
+                }
+            } catch (err) {
+                alert(`Error en la petición - ${err.message}`)
+            }
         };
     });
 }
@@ -66,7 +82,17 @@ if (btnEliminar) {
                 confirmacion = confirm(`¿Desea eliminar los ${cantidadAEliminar} registros seleccionados?`)
             }
             if (confirmacion) {
-                console.log('Se elimina/n el/los registro/s')
+                
+                // Petición 'DELETE' a la API
+                try {
+                    listaAEliminar.forEach(async (element) => {
+                        id = element.id;
+                        const res = await fetch(`/api/registros/:${id}`, {method: 'DELETE'});
+                    });
+                    location.reload();
+                } catch (err) {
+                    alert(`Error en la petición - ${err.message}`)
+                }
             }
         } else {
             alert ('No se han seleccionado registros')
