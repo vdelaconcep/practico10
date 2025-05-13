@@ -1,27 +1,29 @@
 const {
     formularioApp,
-    enviarDatosApp,
     infoApp,
-    eliminarIdApp
-} = require ('../Controller/controlRouter')
+    obtenerRegistros,
+    ingresarRegistro,
+    eliminarId
+} = require ('../controller/controlRouter')
 
 
 const router = require('express').Router();
-const validation = require('../middlewares/joiValidation');
-const usuario = require('../models/user')
 
 
-// Página principal
+// Página principal (formulario)
 router.get('/', formularioApp);
 
-// Enviar y mostrar datos
-router.post('/',/*  validation(usuario), */ enviarDatosApp );
+// Página de información (tabla con registros)
+router.get('/info', infoApp);
 
-// Mostrar datos (sin enviar nuevo registro)
-router.get('/info', infoApp)
+// Obtener registros de la base de datos
+router.get('/api/registros', obtenerRegistros);
+
+// Enviar registro a la base de datos
+router.post('/api/registros', ingresarRegistro);
 
 // Eliminar registro
-router.get('/:id', eliminarIdApp)
+router.delete('/api/registros/:id', eliminarId);
 
 // Exportar el enrutador
 module.exports = router;

@@ -43,9 +43,12 @@ const validacion = () => {
 if (btnEnviar) {
     btnEnviar.addEventListener('click', () => {
         const datosValidos = validacion();
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/info', true);
 
         if (datosValidos) {
             formulario.submit();
+            xhr.send();
         };
     });
 }

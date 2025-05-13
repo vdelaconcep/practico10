@@ -1,7 +1,19 @@
 
 const Registro = require('../models/registroMongo');
 
-const mostrarInfo = async (res) => {
+const serverErrorRender = (req, res, err) => {
+    res.status(500).render('serverError', {
+        title: 500,
+        error: err
+    });
+}
+
+
+const formularioApp = (req, res) => {
+    res.render('index', { title: 'Formulario'});
+};
+
+const infoApp = async (req, res) => {
     try {
         const registros = await (Registro.find());
         res.status(200).render('info', {
@@ -9,63 +21,54 @@ const mostrarInfo = async (res) => {
             registros: registros
         });
     } catch (err) {
-        res.status(500).render('serverError', {
-            title: 500,
-            error: err
-        });
+        serverErrorRender(req, res, err);
+    }
+}
+
+const obtenerRegistros = async (req, res) => {
+    try {
+        const registros = await (Registro.find());
+        res.status(200).json(registros)
+    } catch (err) {
+        serverErrorRender(req, res, err);
     }
 }
 
 
-const formularioApp = (req, res) => {
-    res.render('index', { title: 'Formulario' });
-};
-
-
-const infoApp = (req, res) => {
-    mostrarInfo(res);
-};
-
-
-const enviarDatosApp = async (req, res) => {
+const ingresarRegistro = async (req, res) => {
     try {
         const registroNuevo = {
             nombre: req.body.nombre,
             edad: req.body.edad
         };
 
-        // Registro en base de datos
+        // Guardar registro en base de datos
         const registro = new Registro(registroNuevo);
         const registroGuardado = await registro.save();
-        mostrarInfo(res);
+        res.status(200).send();
         
     } catch (err) {
-        res.status(500).render('serverError', {
-            title: 500,
-            error: err
-        });
+        serverErrorRender(req, res, err);
     }
 };
 
 
-const eliminarIdApp = async (req, res) => {
+const eliminarId = async (req, res) => {
     try {
         const baja = await Registro.findByIdAndDelete(req.params.id.slice(1))
-        mostrarInfo(res)
+        res.status(200).json(baja);
     } catch (err) {
-        res.status(500).render('serverError', {
-            title: 500,
-            error: err
-        });
+        serverErrorRender(req, res, err);
     }
 }
 
 
 module.exports = {
     formularioApp,
-    enviarDatosApp,
     infoApp,
-    eliminarIdApp
+    obtenerRegistros,
+    ingresarRegistro,
+    eliminarId
 }
 
 
