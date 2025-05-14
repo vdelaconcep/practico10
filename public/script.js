@@ -7,6 +7,23 @@ const btnEnviar = document.getElementById('btn-enviar');
 const btnEliminar = document.getElementById('btn-eliminar');
 
 
+// Función para chequear que el nombre no esté duplicado
+const duplicado = async (nombre) => {
+    try {
+        const res = await fetch('/api/registros', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        console.log(data);
+        return data.some(registro => {
+            const mismoNombre = registro.nombre.toLowerCase() === nombre.toLowerCase();
+            return mismoNombre;
+        });
+    } catch (err) {
+        alert(`Error en la validación - ${err.message}`);
+    }
+};
 
 // Función para validar formulario (desde el front)
 const validacion = () => {
@@ -49,21 +66,28 @@ if (btnEnviar) {
         if (datosValidos) {
             event.preventDefault();
 
-            // Petición 'POST' a la API
-            try {
-                const res = await fetch('/api/registros', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `nombre=${inputNombre.value}&edad=${inputEdad.value}`
-                });
-                if (res) {
-                    alert('Se guardó el nuevo registro');
-                    window.location('/info');
-                } else {
-                    alert('No se han podido guardar los datos')
+            const duplic = await duplicado(inputNombre.value);
+
+            if (duplic) {
+                alert('El nombre ya se encuentra registrado')
+                return;
+            } else {
+                // Petición 'POST' a la API
+                try {
+                    const res = await fetch('/api/registros', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `nombre=${inputNombre.value}&edad=${inputEdad.value}`
+                    });
+                    if (res) {
+                        alert('Se guardó el nuevo registro');
+                        window.location.replace('/info');
+                    } else {
+                        alert('No se han podido guardar los datos');
+                    }
+                } catch (err) {
+                    alert(`Error en la petición - ${err.message}`);
                 }
-            } catch (err) {
-                alert(`Error en la petición - ${err.message}`)
             }
         };
     });
