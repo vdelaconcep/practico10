@@ -4,7 +4,9 @@ const {
     obtenerRegistros,
     ingresarRegistro,
     eliminarId
-} = require ('../controller/controlRouter')
+} = require('../controller/controlRouter')
+
+const validarRegistro = require('../validator/validacionRegistro')
 
 
 const router = require('express').Router();
@@ -20,7 +22,7 @@ router.get('/info', infoApp);
 router.get('/api/registros', obtenerRegistros);
 
 // Enviar registro a la base de datos
-router.post('/api/registros', ingresarRegistro);
+router.post('/api/registros', validarRegistro, ingresarRegistro);
 
 // Eliminar registro
 router.delete('/api/registros/:id', eliminarId);

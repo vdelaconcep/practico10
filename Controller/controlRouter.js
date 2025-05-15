@@ -45,7 +45,7 @@ const ingresarRegistro = async (req, res) => {
         // Guardar registro en base de datos
         const registro = new Registro(registroNuevo);
         const registroGuardado = await registro.save();
-        res.status(200).send();
+        res.status(200).send(registroGuardado);
         
     } catch (err) {
         serverErrorRender(req, res, err);

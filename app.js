@@ -11,7 +11,7 @@ const app = express();
 // Middlewares
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
-app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 // Utilizar las vistas de handlebars
 app.set('view engine', 'hbs');

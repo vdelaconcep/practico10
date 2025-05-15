@@ -12,6 +12,7 @@
   "description": "Servidor para trabajo práctico N°10 Bootcamp Full Stack Educación IT",
   "dependencies": {
     "express": "^5.1.0",
+    "express-validator": "^7.2.1",
     "hbs": "^4.2.0",
     "joi": "^17.13.3",
     "mongoose": "^8.14.2",

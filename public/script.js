@@ -72,14 +72,18 @@ if (btnEnviar) {
                 alert('El nombre ya se encuentra registrado')
                 return;
             } else {
+                const datosBody = {
+                    nombre: inputNombre.value,
+                    edad: inputEdad.value
+                }
                 // Petición 'POST' a la API
                 try {
                     const res = await fetch('/api/registros', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `nombre=${inputNombre.value}&edad=${inputEdad.value}`
+                        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+                        body: JSON.stringify(datosBody)
                     });
-                    if (res) {
+                    if (res.status === 200) {
                         alert('Se guardó el nuevo registro');
                         window.location.replace('/info');
                     } else {
