@@ -15,7 +15,7 @@ const duplicado = async (nombre) => {
             headers: { 'Content-Type': 'application/json' }
         });
         const data = await res.json();
-        console.log(data);
+        
         return data.some(registro => {
             const mismoNombre = registro.nombre.toLowerCase() === nombre.toLowerCase();
             return mismoNombre;
